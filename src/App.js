@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "../src/Component/Home/Home/Home";
+import { Routes, Route } from "react-router-dom";
+import React, { createContext } from "react";
+import About from "./Component/Home/About/About";
+import Dashboard from "../src/Component/Dashoboard/Dashboard/Dashboard";
+import LoginModal from "./Component/Login/LoginModal";
+import PrivateRoute from "./Component/Login/PrivateRoute";
+import NotFound from "./Component/NotFound";
+export const UserContext = createContext();
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/login" element={<LoginModal />} />
+        <Route
+          path="/dashboard/*"
+          element={
+            <PrivateRoute redirectTo="/login">
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
