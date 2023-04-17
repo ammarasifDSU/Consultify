@@ -29,7 +29,7 @@ const NavBar = () => {
         <Navbar className={`navbar navbar-expand-lg navbar-light ${isSticky ? "navStyle" : "navDefault"}`} expand="lg">
             <Container>
                 <Navbar.Brand as={Link} to="/" onClick={scrollTop} className="navBrn">
-                    <FontAwesomeIcon icon={faBuffer} className="brnIcon" />  <span className="navHighlight">Consultify</span>
+                    <FontAwesomeIcon icon={faBuffer} className="brnIcon" />  <span className="navHighlight h4">Consultify</span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" />
